@@ -1,31 +1,43 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<!-- script de A-Frane version1 1.0.0 -->
-<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-<!-- script de AR.JS con soporte de marker + location -->
-<script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
-<script src="gesture-detector.js"></script>
- <script src="gesture-handler.js"></script>
+    <!-- Script de A-Frame versión 1.0.0 -->
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <!-- Script de AR.js con soporte de marcador + ubicación -->
+    <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+    <script src="gesture-detector.js"></script>
+    <script src="gesture-handler.js"></script>
 </head>
-<body style="margin : 0px; overflow: hidden;">
-<a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false; detectionMode:
-mono_and_matrix; matrixCodeType: 3x3;"
-renderer="logarithmicDepthBuffer: true;" vr-mode-ui="enabled: false" gesture-detector
-id="scene">
 
- <a-assets>
+<body style="margin: 0px; overflow: hidden;">
+    <a-scene embedded arjs gesture-detector>
+        <a-assets>
+            <!-- Cargamos el modelo GLB desde el nuevo enlace -->
+            <a-asset-item id="moto" src="https://cdn.glitch.global/9c529173-3164-42f4-a417-ce74bea02f9d/captain_america_bike.glb?v=1697048308642"></a-asset-item>
+        </a-assets>
+      
+            <a-marker
+        preset="hiro"
+        raycaster="objects: .clickable"
+        emitevents="true"
+        cursor="fuse: false; rayOrigin: mouse;"
+        id="markerA"
+      >
+        <a-entity
+          id="bowser-model"
+          gltf-model="#moto"
+          position="0 1 1"
+          scale="0.5 0.5 0.5"
+          class="clickable"
+          gesture-handler
+        >
+        </a-entity>
+      </a-marker>
 
- <a-asset-item id="modelo" src="harley_motorcycle_free_download.glb"></a-asset-item>
-  
- </a-assets>
-<a-marker type="barcode" value="6" raycaster="objects: .clickable" emitevents="true"
- cursor="fuse: false; rayOrigin: mouse;">
- <a-entity
- gltf-model="#modelo" scale="20 20 10" class="clickable" gesture-handler>
- </a-entity>
- </a-marker>
-<a-entity camera></a-entity>
-</a-scene>
+        <a-entity camera></a-entity>
+    </a-scene>
 </body>
+
 </html>
+
