@@ -15,7 +15,7 @@
         <a-assets>
             <!-- Cargamos el modelo GLB desde el nuevo enlace -->
             <a-asset-item id="carro" src="https://cdn.glitch.global/9b2667d2-a2ea-405c-9114-7cbda7f4f54a/praga.glb?v=1696987444322"></a-asset-item>
-            <audio id="sound" src="sonido.mp3" preload="auto"></audio>
+            <audio id="sonido" src="sonido.mp3" preload="auto"></audio>
         </a-assets>
       
             <a-marker
@@ -37,7 +37,7 @@
         </a-entity>
       </a-marker>
 
-        <a-entity sound="src: #sound" autoplay="false"></a-entity>
+        <a-entity sound="src: #sonido" autoplay="false"></a-entity>
         <a-entity camera></a-entity>
       
     </a-scene>
@@ -56,8 +56,6 @@
 		</script>
   
 </body>
-
-
   
 </html>
 
