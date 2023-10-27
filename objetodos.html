@@ -18,7 +18,7 @@ id="scene">
  <a-assets>
 
  <a-asset-item id="modelo" src="praga.glb"></a-asset-item>
-<audio id="sound" src="audio.mp3" preload="auto"></audio>
+<audio id="sonido" src="audio.mp3" preload="auto"></audio>
 
  </a-assets>
 <a-marker type="barcode" value="6" raycaster="objects: .clickable" emitevents="true"
@@ -33,20 +33,17 @@ id="scene">
 </a-scene>
 
 <script>
-AFRAME.registerComponent('soundhandler', {
-tick: function () {
-var entity = document.querySelector('[sound]');
-if (document.querySelector('a-marker').object3D.visible == true) {
-entity.components.sound.playSound();
-} else {
-    entity.components.sound.pauseSound();
-	}
+			AFRAME.registerComponent('soundhandler', {
+				tick: function () {
+					   var entity = document.querySelector('[sound]');
+					 if (document.querySelector('a-marker').object3D.visible == true) {
+						entity.components.sound.playSound();
+					} else {
+						entity.components.sound.pauseSound();
+					}
 
-}
-});
+				 }
+			});
 		</script>
-
-
- 
 </body>
 </html>
