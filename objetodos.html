@@ -5,8 +5,8 @@
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <!-- Script de AR.JS con soporte de marcadores + ubicación -->
     <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
-    <script src="gesture-detector.js"></script>
-    <script src="gesture-handler.js"></script>
+    <script src="gesture-detector.js"></script> <!-- Asegúrate de que este archivo esté definido -->
+    <script src="gesture-handler.js"></script> <!-- Asegúrate de que este archivo esté definido -->
   </head>
   <body style="margin: 0px; overflow: hidden;">
     <a-scene
@@ -35,7 +35,7 @@
           scale="0.5 0.5 0.5"
           class="clickable"
           gesture-handler
-          soundhandler="sound: #sonido"
+          soundhandler="sound: #sonido1" <!-- Cambiado de #sonido a #sonido1 -->
         ></a-entity>
       </a-marker>
       <a-marker
@@ -50,11 +50,11 @@
           scale="0.5 0.5 0.5"
           class="clickable"
           gesture-handler
-          soundhandler="sound: #audio"
+          soundhandler="sound: #sonido2" <!-- Cambiado de #audio a #sonido2 -->
         ></a-entity>
       </a-marker>
-      <a-entity sound="src: #sonido" autoplay="false"></a-entity>
-      <a-entity sound="src: #audio" autoplay="false"></a-entity>
+      <a-entity sound="src: #sonido1" autoplay="false"></a-entity> <!-- Cambiado de #sonido a #sonido1 -->
+      <a-entity sound="src: #sonido2" autoplay="false"></a-entity> <!-- Cambiado de #audio a #sonido2 -->
       <a-entity camera></a-entity>
     </a-scene>
 
@@ -64,8 +64,7 @@
           sound: { type: 'selector' }
         },
         tick: function () {
-          var entity = document.querySelector('[sound]');
-          var markerVisible = document.querySelector('a-marker').object3D.visible;
+          var markerVisible = this.el.object3D.visible; // Usar this.el para el marcador actual
           if (markerVisible) {
             this.data.sound.components.sound.playSound();
           } else {
